@@ -6,11 +6,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
-import { DashboardComponent } from './dashboard/dashboard.component'; 
-import { HomepageComponent } from '../_components/homepage/homepage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';  
 
 @NgModule({
-  declarations: [LoginComponent, AdminComponent, DashboardComponent, HomepageComponent],
+  declarations: [LoginComponent, AdminComponent, DashboardComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
