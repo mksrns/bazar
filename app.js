@@ -7,10 +7,7 @@ const mongoose = require('mongoose');
 var path = require("path");
 const http = require('http');
 const compression = require('compression');
-const customerRoutes = require('./api/routes/customers');
-const aboutRoutes = require('./api/routes/abouts');
-const eventRoutes = require('./api/routes/events');
-const storyRoutes = require('./api/routes/stories');
+const customerRoutes = require('./api/routes/customers'); 
 const superAdminRoutes = require('./api/routes/superAdmins');
 const adminRoutes = require('./api/routes/admins');
 const config = require('./config/database');
@@ -59,25 +56,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-//Allow other single page application(or server) to use our resource
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header(
-//         'Access-Control-Allow-Headers', 
-//         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-//     );
-//     if(req.method === 'OPTIONS'){
-//         res.header('Access-Control-Allow-Methods', 'PUT, PATCH, POST, DELETE, GET');
-//         return res.status(200).json({});
-//     }
-//     next();
-// });
-
 //Routes for handling requests
-app.use('/customers', customerRoutes);
-app.use('/events', eventRoutes);
-app.use('/stories', storyRoutes);
-app.use('/abouts', aboutRoutes);
+app.use('/customers', customerRoutes); 
 app.use('/superAdmin', superAdminRoutes);
 app.use('/admin', adminRoutes);
 

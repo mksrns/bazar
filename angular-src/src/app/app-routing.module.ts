@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { HomepageComponent } from './_components/homepage/homepage.component';
-
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component'; 
+import { HomepageComponent } from './_components/homepage/homepage.component'; 
 
 const routes: Routes = [
   // {path: '', redirectTo: '', pathMatch: 'full'},
