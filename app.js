@@ -8,11 +8,13 @@ var path = require("path");
 const http = require('http');
 const compression = require('compression');
 const customerRoutes = require('./api/routes/customers'); 
+const merchantRoutes = require('./api/routes/merchants'); 
+const orderRoutes = require('./api/routes/orders'); 
+const productRoutes = require('./api/routes/products'); 
+const categoryRoutes = require('./api/routes/categories'); 
 const superAdminRoutes = require('./api/routes/superAdmins');
 const adminRoutes = require('./api/routes/admins');
-const config = require('./config/database');
-const imagemin = require('imagemin');
-const imageminWebp = require('imagemin-webp');
+const config = require('./config/database'); 
 
 const port = process.env.PORT || 8080;
 app.use(compression());
@@ -28,14 +30,7 @@ mongoose.connection.on('error', (err) => {
     if(err){
         console.log('Error is: ' +err);
     }
-});
-imagemin(['uploads/*.{jpg,png}'], 'build/images', {
-    use: [
-        imageminWebp({quality: 50})
-    ]
-}).then(() => {
-    console.log('Images optimized');
-});
+}); 
 
 app.use(express.static(path.join(__dirname, 'public'), {
     maxAge: 86400000,
@@ -58,6 +53,10 @@ app.use(bodyParser.json());
 
 //Routes for handling requests
 app.use('/customers', customerRoutes); 
+app.use('/merchants', merchantRoutes); 
+app.use('/orders', orderRoutes); 
+app.use('/products', productRoutes); 
+app.use('/categories', categoryRoutes); 
 app.use('/superAdmin', superAdminRoutes);
 app.use('/admin', adminRoutes);
 

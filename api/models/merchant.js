@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var customerSchema = new Schema({
+var merchantSchema = new Schema({
     name: {
         firstname: {type: String, required: true},
         lastname: {type: String}
     },
-    customerImage: { type: String },
+    merchantImage: { type: String },
     username: {type: String},
     password: {type: String },
     created_at: {type: Date, required:true },
@@ -24,4 +24,4 @@ var customerSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Customer', customerSchema);
+module.exports = mongoose.model('Merchant', merchantSchema);
