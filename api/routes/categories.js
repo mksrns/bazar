@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const checkAdminAuth = require('../middlewares/check-adminAuth');
-const CustomersController = require('../controllers/customers');
+const CategoriesController = require('../controllers/categories');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -30,19 +30,19 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-//Fetch all customer
-router.get('/', checkAdminAuth, CustomersController.customers_get_all);
+//Fetch all category
+router.get('/', checkAdminAuth, CategoriesController.categories_get_all);
 
-//Fetch Individual Customer
-router.get('/:customerId', checkAdminAuth, CustomersController.customers_get_customer);
+//Fetch Individual category
+router.get('/:categoryId', checkAdminAuth, CategoriesController.categories_get_category);
 
-//Insert customer
-router.post('/', checkAdminAuth, upload.single('customerImage'), CustomersController.customers_create_customer);
+//Insert category
+router.post('/', checkAdminAuth, upload.single('categoryImage'), CategoriesController.categories_create_category);
 
-//Update Customer
-router.patch('/:customerId', checkAdminAuth, upload.single('customerImage'), CustomersController.customers_update_customer);
+//Update category
+router.patch('/:categoryId', checkAdminAuth, upload.single('categoryImage'), CategoriesController.categories_update_category);
 
-//Delete Customer
-router.delete('/:customerId', checkAdminAuth, CustomersController.customers_delete_customer);
+//Delete category
+router.delete('/:categoryId', checkAdminAuth, CategoriesController.categories_delete_category);
 
 module.exports = router;
